@@ -1,0 +1,13 @@
+version: '3'
+
+services: # List all services
+  web: # Web application service
+    build: ./web # Dockerfile location for 'web' application
+    ports:
+      - "5000:5000" # Server:Client
+    links:
+      - db # 'web' service depends on 'db' service
+  db: # The MongoDB service
+    build: ./db
+    ports:
+      - "27017:27017" # Server:Client, this will allow connecting from outside the container
